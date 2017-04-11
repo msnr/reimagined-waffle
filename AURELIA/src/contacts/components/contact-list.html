@@ -1,0 +1,75 @@
+<template>
+    <div class="card has-shadow">
+        <header class="card-header">
+            <h1 class="card-header-title"> Contacts </h1>
+        </header>
+        <div class="card-content">
+
+            <div if.bind="error">
+                <div class="notification is-danger has-text-centered">Error Loading Contacts.</div>
+            </div>
+
+            <div if.bind="!error">
+
+                <div class="control is-grouped">
+                    <p class="control is-expanded">
+                        <input class="input" type="text" name="searchText" value.bind="filter"
+                               placeholder="Search for a name or company"/>
+                    </p>
+                </div>
+
+                <table class="table is-striped is-narrow">
+                    <thead>
+                    <tr>
+                        <th click.delegate="setOrder('firstName')">Firstname
+                            <span class="icon is-small">
+								<i class="${!order.asc && order.property === 'firstName' ? 'fa fa-caret-up' : ''}
+								${order.asc && order.property === 'firstName' ? 'fa fa-caret-down' : ''}"></i>
+							</span>
+                        </th>
+                        <th click.delegate="setOrder('lastName')">Lastname
+                            <span class="icon is-small">
+								<i class="${!order.asc && order.property === 'lastName' ? 'fa fa-caret-up' : ''}
+								${order.asc && order.property === 'lastName' ? 'fa fa-caret-down' : ''}"></i>
+							</span>
+                        </th>
+                        <th click.delegate="setOrder('company')">Company
+                            <span class="icon is-small">
+								<i class="${!order.asc && order.property === 'company' ? 'fa fa-caret-up' : ''}
+								${order.asc && order.property === 'company' ? 'fa fa-caret-down' : ''}"></i>
+							</span>
+                        </th>
+                        <th>E-Mail</th>
+                        <th>Phone</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Company</th>
+                        <th>E-Mail</th>
+                        <th>Phone</th>
+                        <th></th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr repeat.for="contact of contacts | filterBy:filter | orderBy:order.property:order.asc"
+                        with.bind="contact">
+                        <td>${firstName}</td>
+                        <td>${lastName}</td>
+                        <td>${company}</td>
+                        <td>${emails[0].address}</td>
+                        <td>${phones[0].number}</td>
+                        <td>
+                            <a route-href="route: contact-details; params.bind: { id: _id }"> <span class="icon"><i
+                                    class="fa fa-info-circle"></i></span></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>

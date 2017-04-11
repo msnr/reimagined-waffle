@@ -1,0 +1,71 @@
+<div class="card">
+    <header class="card-header">
+        <h1 class="card-header-title"> {{contact.firstName}} {{contact.lastName}} </h1>
+    </header>
+    <div class="card-content">
+        <div class="columns">
+            <div class="column is-3 has-text-centered"><img
+                    src="{{contact.photoUrl ? contact.photoUrl : 'http://placehold.it/250x250'}}" alt=""></div>
+            <div class="column auto">
+                <table class="table">
+                    <tr>
+                        <th>Created:</th>
+                        <td>{{contact.createdAt | date:'dd.MM.yyyy - H:m:s'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Updated:</th>
+                        <td>{{contact.updatedAt | date:'dd.MM.yyyy - H:m:s'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Name:</th>
+                        <td>{{contact.firstName}} {{contact.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <th>Birthday:</th>
+                        <td>{{contact.birthday}}</td>
+                    </tr>
+                    <tr>
+                        <th>Company:</th>
+                        <td>{{contact.company}}</td>
+                    </tr>
+                    <tr>
+                        <th>E-Mail(s):</th>
+                    </tr>
+                    <tr *ngFor="let email of contact.emails">
+                        <td>{{email.type}}</td>
+                        <td><a href="mailto:{{email.address}}">{{email.address}}</a></td>
+                    </tr>
+                    <tr>
+                        <th>Phonenumber(s):</th>
+                    </tr>
+                    <tr *ngFor="let phone of contact.phones">
+                        <td>{{phone.type}}</td>
+                        <td>{{phone.number}}</td>
+                    </tr>
+                    <tr>
+                        <th>Address(es):</th>
+                    </tr>
+                    <tr *ngFor="let address of contact.addresses">
+                        <td>{{address.type}}</td>
+                        <td>{{address.address}}</td>
+                    </tr>
+                    <tr>
+                        <th>Social Profile(s):</th>
+                    </tr>
+                    <tr *ngFor="let profile of contact.socialProfiles">
+                        <td>{{profile.type}}</td>
+                        <td>{{profile.username}}</td>
+                    </tr>
+                    <tr>
+                        <th>Note:</th>
+                        <td>{{contact.note}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer class="card-footer">
+        <a class="card-footer-item" [routerLink]="['edit']">Edit</a>
+        <a class="card-footer-item" (click)="onNavigateBack()">Cancel</a>
+    </footer>
+</div>

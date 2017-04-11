@@ -1,0 +1,143 @@
+<template>
+    <require from="./contact-edition.css"></require>
+    <div class="card">
+        <form id="contactForm" submit.delegate="saveContact()">
+            <header class="card-header">
+                <h1 class="card-header-title"> ${isNew ? 'Add new' : 'Edit' } contact</h1>
+            </header>
+            <div class="card-content">
+                <div class="columns">
+                    <div class="column auto ">
+                        <label for="firstname" class="label">First name</label>
+                        <p class="control">
+                            <input id="firstname" class="input" type="text" value.bind="contact.firstName"
+                                   placeholder="">
+                        </p>
+
+                        <label for="lastname" class="label">Last name</label>
+                        <p class="control">
+                            <input id="lastname" class="input" type="text" value.bind="contact.lastName" required
+                                   placeholder="">
+                        </p>
+
+                        <label for="birthday" class="label">Birthday</label>
+                        <p class="control">
+                            <input id="birthday" class="input" type="date" value.bind="contact.birthday" placeholder="">
+                        </p>
+
+                        <label for="company" class="label">Company</label>
+                        <p class="control">
+                            <input id="company" class="input" type="text" value.bind="contact.company" placeholder="">
+                        </p>
+
+                        <label for="photo" class="label">Photo</label>
+                        <p class="control">
+                            <input id="photo" class="input" type="text" value.bind="contact.photoUrl"
+                                   placeholder="Photo URL">
+                        </p>
+
+                        <label class="label">Email</label>
+                        <p class="control has-addons" repeat.for="email of contact.emails">
+							<span class="select">
+							<select value.bind="email.type">
+								<option value="Home">Home</option>
+								<option value="Office">Office</option>
+								<option value="Other">Other</option>
+							</select>
+							</span>
+                            <input type="email" class="input is-expanded" required placeholder="Email address"
+                                   value.bind="email.address ">
+                            <a class="button is-danger is-outlined" title="Remove"
+                               click.delegate="contact.emails.splice($index, 1)">
+                                <span class="icon"><i class="fa fa-times"></i></span>
+                            </a>
+                        </p>
+                        <a type="button" class="button is-primary is-outlined" click.delegate="contact.addEmail()">
+                            <span class="icon">	<i class="fa fa-plus-square-o"> </i> </span> &nbsp; Add an email
+                            address
+                        </a>
+
+                        <label class="label">Phone</label>
+                        <p class="control has-addons" repeat.for="phoneNumber of contact.phones">
+							<span class="select">
+								<select value.bind="phoneNumber.type">
+									<option value="Home">Home</option>
+									<option value="Office">Office</option>
+									<option value="Mobile">Mobile</option>
+									<option value="Other">Other</option>
+								</select>
+								</span>
+                            <input type="tel" class="input is-expanded" required placeholder="Phone number"
+                                   value.bind="phoneNumber.number ">
+                            <a class="button is-danger is-outlined" title="Remove"
+                               click.delegate="contact.phones.splice($index, 1)">
+                                <span class="icon"><i class="fa fa-times"></i></span>
+                            </a>
+                        </p>
+                        <a type="button" class="button is-primary is-outlined" click.delegate="contact.addPhone()">
+                            <span class="icon">	<i class="fa fa-plus-square-o"> </i> </span> &nbsp; Add a phone
+                            number
+                        </a>
+
+                        <label class="label">Social Profiles</label>
+                        <p class="control has-addons" repeat.for="profile of contact.socialProfiles">
+							<span class="select">
+							<select value.bind="profile.type">
+								<option value="GitHab">GitHab</option>
+								<option value="Xing">Xing</option>
+								<option value="LinkedIn">LinkedIn</option>
+								<option value="Facebook">Facebook</option>
+								<option value="Twitter">Twitter</option>
+								<option value="Google">Google</option>
+							</select>
+							</span>
+                            <input type="text" class="input is-expanded" required placeholder="Username"
+                                   value.bind="profile.username ">
+                            <a class="button is-danger is-outlined" title="Remove"
+                               click.delegate="contact.socialProfiles.splice($index, 1)">
+                                <span class="icon"><i class="fa fa-times"></i></span>
+                            </a>
+                        </p>
+                        <a type="button" class="button is-primary is-outlined"
+                           click.delegate="contact.addSocialProfile()">
+                            <span class="icon">	<i class="fa fa-plus-square-o"> </i> </span> &nbsp; Add an social
+                            profile
+                        </a>
+
+                        <label class="label">Address</label>
+                        <p class="control has-addons" repeat.for="address of contact.addresses">
+							<span class="select">
+							<select value.bind="address.type">
+								<option value="Home">Home</option>
+								<option value="Office">Office</option>
+								<option value="Other">Other</option>
+							</select>
+							</span>
+                            <input type="text" class="input is-expanded" required placeholder="address"
+                                   value.bind="address.address ">
+                            <a class="button is-danger is-outlined" title="Remove"
+                               click.delegate="contact.addresses.splice($index, 1)">
+                                <span class="icon"><i class="fa fa-times"></i></span>
+                            </a>
+                        </p>
+                        <a type="button" class="button is-primary is-outlined" click.delegate="contact.addAddress()">
+                            <span class="icon">	<i class="fa fa-plus-square-o"> </i> </span> &nbsp; Add an address
+                        </a>
+
+                        <label for="note" class="label">Note</label>
+                        <p class="control">
+                            <textarea id="note" class="textarea" value.bind="contact.note"
+                                      placeholder="Textarea"></textarea>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <footer class="card-footer">
+                <input class="card-footer-item" form="contactForm" type="submit" type="button" value="Save"></input>
+                <a if.bind="!isNew" class="card-footer-item" click.delegate="deleteContact()">Delete</a>
+                <a class="card-footer-item" click.delegate="router.navigateBack()">Cancel</a>
+            </footer>
+
+        </form>
+    </div>
+</template>

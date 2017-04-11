@@ -1,0 +1,25 @@
+{
+  "name": "crm-prototype-react",
+	"author": "Marc Sandor Norman Rinner",
+	"description": "Prototyp in React",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.8.4"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "bulma": "^0.3.2",
+    "history": "^4.5.1",
+    "moment": "^2.17.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-router": "^v2.0.0-rc5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

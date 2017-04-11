@@ -1,0 +1,48 @@
+<template>
+	<require from="bulma/css/bulma.css"></require>
+	<require from="./shared/sidebar"></require>
+
+	<nav class="nav has-shadow">
+		<div class="container">
+			<div class="nav-left">
+				<span class="nav-item">
+					<span class="title is-5">${router.title}</span>
+				</span>
+				<a repeat.for="row of router.navigation" class="nav-item is-tab is-hidden-mobile ${row.isActive ? 'is-active' : ''}" href.bind="row.href">${row.title}</a>
+				<a class="nav-item is-tab is-hidden-mobile ${row.isActive ? 'is-active' : ''}" href.bind="'/companies'">Companies</a>
+				<a class="nav-item is-tab is-hidden-mobile ${row.isActive ? 'is-active' : ''}" href.bind="'/Transactions'">Transactions</a>
+				<a class="nav-item is-tab is-hidden-mobile ${row.isActive ? 'is-active' : ''}" href.bind="'/About'">About</a>
+			</div>
+			<span class="nav-toggle ">
+      <span></span>
+			<span></span>
+			<span></span>
+			</span>
+			<div class="nav-right nav-menu ">
+				<a class="nav-item is-tab is-hidden-tablet is-active ">Home</a>
+				<a class="nav-item is-tab is-hidden-tablet ">Features</a>
+				<a class="nav-item is-tab is-hidden-tablet ">Pricing</a>
+				<a class="nav-item is-tab is-hidden-tablet ">About</a>
+				<a class="nav-item is-tab ">Profile</a>
+				<a class="nav-item is-tab ">Log out</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<section class="section">
+		<div class="container">
+			<div class="columns">
+
+				<div class="column is-8">
+					<router-view></router-view>
+				</div>
+				<div class="column is-4">
+					<Sidebar />
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+</template>

@@ -1,0 +1,56 @@
+E:\PROJECTS\Bachelor\crm-prototype-aurelia
+|-- aurelia_project
+|  |-- aurelia.json
+|  |-- environments
+|  |  |-- dev.js
+|  |  |-- prod.js
+|  |  `-- stage.js
+|  |-- generators
+|  |  |-- attribute.js
+|  |  |-- attribute.json
+|  |  |-- binding-behavior.js
+|  |  |-- binding-behavior.json
+|  |  |-- element.js
+|  |  |-- element.json
+|  |  |-- generator.js
+|  |  |-- generator.json
+|  |  |-- task.js
+|  |  |-- task.json
+|  |  |-- value-converter.js
+|  |  `-- value-converter.json
+|  `-- tasks
+|     |-- build.js
+|     |-- build.json
+|     |-- process-css.js
+|     |-- process-markup.js
+|     |-- run.js
+|     |-- run.json
+|     |-- test.js
+|     |-- test.json
+|     `-- transpile.js
+|-- favicon.ico
+|-- index.html
+|-- jsconfig.json
+|-- karma.conf.js
+|-- node_modules
+|  `-- [...]
+|-- package.json
+|-- src
+|  |-- app.html
+|  |-- app.js
+|  |-- environment.js
+|  |-- main.js
+|  `-- resources
+|     |-- attributes
+|     |-- binding-behaviors
+|     |-- elements
+|     |-- index.js
+|     `-- value-converters
+|-- test
+|  |-- aurelia-karma.js
+|  `-- unit
+|     |-- app.spec.js
+|     `-- setup.js
+`-- yarn.lock
+
+directory: 3013 file: 26196 

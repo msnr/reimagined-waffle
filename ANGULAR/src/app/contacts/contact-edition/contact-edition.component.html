@@ -1,0 +1,163 @@
+<div class="card">
+    <form id="contactForm" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <header class="card-header">
+            <h1 class="card-header-title"> {{ isNew ? 'Create new': 'Edit'}} contact </h1>
+            <!--<h1 *ngIf="isNew" class="card-header-title"> Create new contact </h1>
+        <h1 *ngIf="!isNew" class="card-header-title"> Edit Contact </h1>-->
+        </header>
+        <div class="card-content">
+            <div class="columns">
+                <div class="column auto ">
+
+                    <label for="firstname" class="label">First name</label>
+                    <p class="control">
+                        <input id="firstname" class="input" type="text" placeholder="" formControlName="firstName">
+                    </p>
+
+                    <label for="lastname" class="label">Last name</label>
+                    <p class="control">
+                        <input id="lastname" class="input" type="text" placeholder="" formControlName="lastName">
+                    </p>
+
+                    <label for="birthday" class="label">Birthday</label>
+                    <p class="control">
+                        <input id="birthday" class="input" type="date" placeholder="" formControlName="birthday">
+                    </p>
+
+                    <label for="company" class="label">Company</label>
+                    <p class="control">
+                        <input id="company" class="input" type="text" placeholder="" formControlName="company">
+                    </p>
+
+                    <label for="company" class="label">Photo</label>
+                    <p class="control">
+                        <input id="photoUrl" class="input" type="text" placeholder="photo URL"
+                               formControlName="photoUrl">
+                    </p>
+
+                    <div formArrayName="emails">
+                        <label class="label">Email</label>
+                        <div *ngFor="let email of contactForm.controls['emails'].controls; let i = index">
+                            <p class="control has-addons" formGroupName="{{i}}">
+										<span class="select">
+										<select formControlName="type">
+											<option value="Home">Home</option>
+											<option value="Office">Office</option>
+											<option value="Other">Other</option>
+										</select>
+									</span>
+                                <input type="email" class="input is-expanded" placeholder="Email address"
+                                       formControlName="address">
+                                <a class="button is-danger is-outlined" title="Remove"
+                                   (click)="contactForm.controls['emails'].removeAt(i, 1)">
+                                    <span class="icon"><i class="fa fa-times"></i></span>
+                                </a>
+                            </p>
+                        </div>
+                        <!--ngFor-->
+                    </div>
+                    <!--formArray-->
+                    <a type="button" class="button is-primary is-outlined" (click)="this.onAddTo('emails')">
+                        <span class="icon">	<i class="fa fa-plus-square-o"> </i> </span> &nbsp; Add an email address
+                    </a>
+                    <!--emails-->
+
+                    <div formArrayName="phones">
+                        <label class="label">Phone</label>
+                        <div *ngFor="let phone of contactForm.controls['phones'].controls; let i = index">
+                            <p class="control has-addons" formGroupName="{{i}}">
+										<span class="select">
+										<select formControlName="type">
+											<option value="Home">Home</option>
+											<option value="Office">Office</option>
+											<option value="Mobile">Mobile</option>
+											<option value="Other">Other</option>
+										</select>
+									</span>
+                                <input type="text" class="input is-expanded" placeholder="Phone number"
+                                       formControlName="number">
+                                <a class="button is-danger is-outlined" title="Remove"
+                                   (click)="contactForm.controls['phones'].removeAt(i, 1)">
+                                    <span class="icon"><i class="fa fa-times"></i></span>
+                                </a>
+                            </p>
+                        </div>
+                        <!--ngFor-->
+                    </div>
+                    <!--formArray-->
+                    <a type="button" class="button is-primary is-outlined" (click)="this.onAddTo('phones')">
+                        <span class="icon">	<i class="fa fa-plus-square-o"> </i> </span> &nbsp; Add a phone number
+                    </a>
+                    <!--phones-->
+
+                    <div formArrayName="socialProfiles">
+                        <label class="label">Email</label>
+                        <div *ngFor="let profile of contactForm.controls['socialProfiles'].controls; let i = index">
+                            <p class="control has-addons" formGroupName="{{i}}">
+										<span class="select">
+										<select formControlName="type">
+											<option value="GitHub">GitHub</option>
+											<option value="Xing">Xing</option>
+											<option value="LinkedIn">LinkedIn</option>
+											<option value="Facebook">Facebook</option>
+											<option value="Twitter">Twitter</option>
+											<option value="Google">Google</option>
+										</select>
+									</span>
+                                <input type="text" class="input is-expanded" placeholder="username"
+                                       formControlName="username">
+                                <a class="button is-danger is-outlined" title="Remove"
+                                   (click)="contactForm.controls['socialProfiles'].removeAt(i, 1)">
+                                    <span class="icon"><i class="fa fa-times"></i></span>
+                                </a>
+                            </p>
+                        </div>
+                        <!--ngFor-->
+                    </div>
+                    <!--formArray-->
+                    <a type="button" class="button is-primary is-outlined" (click)="this.onAddTo('socialProfiles')">
+                        <span class="icon">	<i class="fa fa-plus-square-o"> </i> </span> &nbsp; Add a social profile
+                    </a>
+                    <!--social-->
+
+                    <div formArrayName="addresses">
+                        <label class="label">Address</label>
+                        <div *ngFor="let address of contactForm.controls['addresses'].controls; let i = index">
+                            <p class="control has-addons" formGroupName="{{i}}">
+										<span class="select">
+										<select formControlName="type">
+											<option value="Home">Home</option>
+											<option value="Office">Office</option>
+											<option value="Other">Other</option>
+										</select>
+									</span>
+                                <input type="email" class="input is-expanded" placeholder="Address"
+                                       formControlName="address">
+                                <a class="button is-danger is-outlined" title="Remove"
+                                   (click)="contactForm.controls['addresses'].removeAt(i, 1)">
+                                    <span class="icon"><i class="fa fa-times"></i></span>
+                                </a>
+                            </p>
+                        </div>
+                        <!--ngFor-->
+                    </div>
+                    <!--formArray-->
+                    <a type="button" class="button is-primary is-outlined" (click)="this.onAddTo('addresses')">
+                        <span class="icon">	<i class="fa fa-plus-square-o"> </i> </span> &nbsp; Add an address
+                    </a>
+                    <!--addresses-->
+
+                    <label for="note" class="label">Note</label>
+                    <p class="control">
+                        <textarea id="note" class="textarea" placeholder="Textarea" formControlName="note"></textarea>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer class="card-footer">
+            <button type="submit" [disabled]="!contactForm.valid" class="card-footer-item">Save</button>
+            <a *ngIf="!isNew" class="card-footer-item" (click)="onDelete()">Delete</a>
+            <a class="card-footer-item" (click)="onNavigateBack()">Cancel</a>
+        </footer>
+    </form>
+</div>

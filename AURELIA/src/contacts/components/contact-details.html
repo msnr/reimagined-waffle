@@ -1,0 +1,72 @@
+<template>
+    <div class="card">
+        <header class="card-header">
+            <h1 class="card-header-title"> ${contact.fullName} </h1>
+        </header>
+        <div class="card-content">
+            <div class="columns">
+                <div class="column is-3 "><img src.bind="contact.photoUrl" alt=""></div>
+                <div class="column auto ">
+                    <table class="table" with.bind="contact">
+                        <tr>
+                            <th>Created:</th>
+                            <td>${createdAt | date:'DD.MM.YYYY - HH:mm:ss'}</td>
+                        </tr>
+                        <tr>
+                            <th>Updated:</th>
+                            <td>${updatedAt | date:'DD.MM.YYYY - HH:mm:ss'}</td>
+                        </tr>
+                        <tr>
+                            <th>Name:</th>
+                            <td>${fullName}</td>
+                        </tr>
+                        <tr>
+                            <th>Birthday:</th>
+                            <td>${birthday | date:'DD.MM.YYYY'}</td>
+                        </tr>
+                        <tr>
+                            <th>Company:</th>
+                            <td>${company}</td>
+                        </tr>
+                        <tr>
+                            <th>E-Mail(s):</th>
+                        <tr repeat.for="email of emails">
+                            <td>${email.type}</td>
+                            <td><a href="mailto:${email.address}">${email.address}</a></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <th>Phonenumber(s):</th>
+                        <tr repeat.for="phone of phones">
+                            <td>${phone.type}</td>
+                            <td>${phone.number}</td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <th>Address(es):</th>
+                        <tr repeat.for="address of addresses">
+                            <td>${address.type}</td>
+                            <td>${address.address}</td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <th>Social Profile(s):</th>
+                        <tr repeat.for="profile of socialProfiles">
+                            <td>${profile.type}</td>
+                            <td>${profile.username}</td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <th>Note:</th>
+                            <td>${note}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer class="card-footer">
+            <a class="card-footer-item" route-href="route: contact-edition; params.bind: { id: contact._id }">Edit</a>
+            <a class="card-footer-item" click.delegate="router.navigateBack()">Cancel</a>
+        </footer>
+    </div>
+</template>

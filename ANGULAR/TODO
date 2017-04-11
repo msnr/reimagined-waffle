@@ -1,0 +1,3 @@
+refactor Contacts & Core to use @NgModule
+add lazy loading?
+add validation
